@@ -32,4 +32,30 @@ describe('Calculator module', () => {
   test('subtraction resulting negative', () => {
     expect(calc.sub(2, 5)).toBe(-3);
   });
+
+  // New tests for extended operations
+  test('modulo: 5 % 2 = 1', () => {
+    expect(calc.modulo(5, 2)).toBe(1);
+  });
+
+  test('power: 2 ** 8 = 256', () => {
+    expect(calc.power(2, 8)).toBe(256);
+  });
+
+  test('power with non-integer exponent: 9 ** 0.5 = 3', () => {
+    expect(calc.power(9, 0.5)).toBeCloseTo(3, 10);
+  });
+
+  test('squareRoot: sqrt(16) = 4', () => {
+    expect(calc.squareRoot(16)).toBe(4);
+  });
+
+  test('squareRoot: sqrt(2) ~= 1.41421356', () => {
+    expect(calc.squareRoot(2)).toBeCloseTo(1.41421356, 8);
+  });
+
+  test('squareRoot of negative number throws RangeError', () => {
+    expect(() => calc.squareRoot(-4)).toThrow(RangeError);
+    expect(() => calc.squareRoot(-4)).toThrow(/negative/i);
+  });
 });
